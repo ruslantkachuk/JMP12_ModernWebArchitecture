@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<h1>Product Details</h1>
+
+	<dl class="dl-horizontal">
+		<dt>Name</dt>
+		<dd th:text="${product.name}">number</dd>
+		<dt>Quantity</dt>
+		<dd th:text="${product.quantity}">number</dd>
+		<dt>Price</dt>
+		<dd th:text="${product.price}">number</dd>
+	</dl>
+
+	<div th:replace="footer :: copy"></div>
+</body>
+</html>

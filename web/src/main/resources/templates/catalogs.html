@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<h1>Catalogs</h1>
+
+	<div th:if="${catalogs}">
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>Name</th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr th:each="catalog : ${catalogs}">
+				<td><a href="catalog.html"
+					   th:href="@{|/catalogs/${catalog.id}|}"
+					   th:text="|${catalog.name}|"></a></td>
+				<td>
+					<form action="#" th:object="${catalog}" method="GET"
+						  th:action="@{|/catalogs/${catalog.id}/update|}" class="form-horizontal">
+						<div class="form-group">
+							<div class="col-xs-offset-2 col-xs-10">
+								<button type="submit" class="btn btn-primary">Update</button>
+							</div>
+						</div>
+					</form>
+				</td>
+				<td>
+					<form action="#" th:object="${catalog}" th:method="delete"
+						  th:action="@{|/catalogs/${catalog.id}|}" class="form-horizontal">
+						<input type="hidden" name="_method" value="delete" />
+						<div class="col-xs-offset-2 col-xs-10">
+							<button type="submit" class="btn btn-primary">Delete</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<p>
+		Create new catalog
+	</p>
+
+	<form action="#" th:object="${catalog}" th:method="post"
+		  th:action="@{/catalogs}" class="form-horizontal">
+		<div class="form-group">
+			<label for="name" class="control-label col-xs-2">Catalog Name</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" id="name"
+					   th:field="*{name}" style="width: 10em;" />
+			</div>
+			<div class="col-xs-2">
+				<button type="submit" class="btn btn-primary">Create</button>
+			</div>
+		</div>
+	</form>
+	<div th:replace="footer :: copy"></div>
+</body>
+</html>

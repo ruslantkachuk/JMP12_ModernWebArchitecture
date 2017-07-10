@@ -1,0 +1,41 @@
+# Spring properties
+spring:
+  application:
+     name: cart-application  # Service registers under this name
+  datasource:
+    url: jdbc:hsqldb:mem:cart
+    username: root
+    password: root
+    driver-class-name: org.hsqldb.jdbcDriver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: true
+    database-platform: HSQL
+
+debug: true
+
+management:
+  security:
+    enabled: false
+
+security:
+  user:
+    password: unused
+  basic:
+    enabled: false
+
+
+# HTTP Server
+server:
+  port: 5555   # HTTP (Tomcat) port
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5

@@ -1,0 +1,7 @@
+include 'registration'
+include 'account'
+include 'web'
+include 'core'
+include 'catalog'
+include 'cart'
+

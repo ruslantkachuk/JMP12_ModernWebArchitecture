@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<div th:if="${cart}">
+		<h1>Cart</h1>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Total price</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr th:each="cartItem : ${cart.cartItems}">
+				<td th:text="${cartItem.product.name}"></td>
+				<td th:text="${cartItem.quantity}"></td>
+				<td th:text="${cartItem.price}"></td>
+				<td th:text="${cartItem.totalPrice}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div th:replace="footer :: copy"></div>
+</body>
+</html>

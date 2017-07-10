@@ -1,0 +1,8 @@
+bootRepackage {
+    mainClass = 'com.jmp.AccountApplication'
+}
+
+dependencies {
+    compile ("org.springframework.boot:spring-boot-starter-actuator")
+    compile project (":core")
+}

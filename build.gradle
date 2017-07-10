@@ -1,0 +1,59 @@
+buildscript {
+    ext {
+        springCloudVersion = 'Dalston.SR1'
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    version = "1"
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+
+//    sourceCompatibility = '1.8'
+//    targetCompatibility = '1.8'
+
+    springBoot {
+        executable = true
+        buildInfo()
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+        }
+    }
+
+    dependencies {
+        compile "org.springframework.cloud:spring-cloud-starter-eureka"
+        compile "org.hsqldb:hsqldb"
+        compile "org.springframework.boot:spring-boot-starter"
+        compile "org.springframework.boot:spring-boot-starter-web"
+        compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+        compile "org.springframework.data:spring-data-commons"
+        compile "org.springframework.boot:spring-boot-starter-data-jpa"
+        compile "org.springframework.boot:spring-boot-starter-web"
+        compile "org.springframework.boot:spring-boot-starter-actuator"
+        compile "org.springframework.boot:spring-boot-starter-security"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+
+    }
+}

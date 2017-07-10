@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<div th:if="not ${catalog}" class="error">
+		Catalog not exist!
+		<div style="height: 2cm">&nbsp;</div>
+	</div>
+
+	<div th:if="${catalog.products}">
+		<h1>Catalog </h1><h1 th:text="${catalog.name}">name</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th></th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="product : ${catalog.products}">
+					<td><a href="product.html"
+						th:href="@{|/products/${product.id}|}"
+						th:text="|${product.name}|"></a></td>
+					<td th:text="${product.quantity}"></td>
+					<td th:text="${product.price}"></td>
+					<td>
+						<form action="#" th:object="${cartItem}" method="POST"
+							  th:action="@{/cart}" class="form-horizontal">
+							<input class="form-control"
+								   type="hidden"
+								   th:value="${product.price}" id="price" name="price" />
+							<input class="form-control"
+								   type="hidden"
+								   th:value="${product.id}" id="idProduct" name="idProduct" />
+							<input class="form-control"
+								   type="hidden"
+								   th:value="1" id="quantity" name="quantity" />
+							<div class="form-group">
+								<div class="col-xs-offset-2 col-xs-10">
+									<button type="submit" class="btn btn-primary">Add to cart</button>
+								</div>
+							</div>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div th:replace="footer :: copy"></div>
+</body>
+</html>

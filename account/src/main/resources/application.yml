@@ -1,0 +1,46 @@
+# Spring properties
+spring:
+  application:
+     name: account-application  # Service registers under this name
+  datasource:
+    url: jdbc:hsqldb:memccount
+    username: root
+    password: root
+    driver-class-name: org.hsqldb.jdbcDriver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: true
+    database-platform: HSQL
+  freemarker:
+    enabled: false           # Ignore Eureka dashboard FreeMarker templates
+  thymeleaf:
+    cache: false             # Allow Thymeleaf templates to be reloaded at runtime
+    prefix: classpath:/templates/
+    mode: HTML5
+
+management:
+  security:
+    enabled: false
+
+security:
+  user:
+    password: unused
+  basic:
+    enabled: false
+
+error:
+  path: /error
+
+# HTTP Server
+server:
+  port: 2222   # HTTP (Tomcat) port
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5
