@@ -24,7 +24,7 @@ Additional services are created:
 Pros and cons of usage SOA vs MicroServices 
 -----------------------
 
-####SOA advantages
+#### SOA advantages
 - Service Reusability.
 In SOA, an application is built by assembling small, self-contained, and loosely coupled pieces of functionality. Therefore, the services can be reused in multiple applications independent of their interactions with other services.
 
@@ -49,7 +49,7 @@ SOA facilitates the development of a complex product by integrating different pr
 - Increased Productivity.
 Developers can reuse existing legacy applications and build additional functionality without having to develop the entire thing from scratch. This increases the developers' productivity, and at the same time, substantially reduces the cost of developing an application.
 
-####SOA disadvantages
+#### SOA disadvantages
 
 - Increased Overhead.
 Every time a service interacts with another service, complete validation of every input parameter takes place. This increases the response time and machine load, and thereby reduces the overall performance.
@@ -60,7 +60,7 @@ The service needs to ensure that messages have been delivered in a timely manner
 - High Investment Cost.
 Implementation of SOA requires a large upfront investment by means of technology, development, and human resource.
 
-####MicroServices advantages
+#### MicroServices advantages
 - Each microservice is relatively small
 - Easier for a developer to understand
 - The IDE is faster making developers more productive
@@ -71,7 +71,7 @@ Implementation of SOA requires a large upfront investment by means of technology
 - Each service can be developed and deployed independently
 - Eliminates any long-term commitment to a technology stack. When developing a new service you can pick a new technology stack. Similarly, when making major changes to an existing service you can rewrite it using a new technology stack.
 
-####MicroServices disadvantages
+#### MicroServices disadvantages
 - Developers must deal with the additional complexity of creating a distributed system.
 - Developer tools/IDEs are oriented on building monolithic applications and don’t provide explicit support for developing distributed applications.
 - Testing is more difficult
